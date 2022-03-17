@@ -16,6 +16,8 @@ jobs:
       - attach_workspace:
           at: ./target
       - run: chmod +x mvnw && ./mvnw test
+      - store_artifacts:
+          path: target/site/jacoco/index.html
       - save_cache:
           paths:
             - ~/.m2
