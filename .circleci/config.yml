@@ -17,7 +17,7 @@ jobs:
           at: ./target
       - run: chmod +x mvnw && ./mvnw test
       - store_artifacts:
-          path: target/site/jacoco/index.html
+          path: target/site
       - save_cache:
           paths:
             - ~/.m2
