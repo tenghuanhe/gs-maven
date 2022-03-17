@@ -3,10 +3,7 @@ version: 2.1
 jobs:
   hello-circleci:
     docker:
-      - image: cimg/openjdk:17.0.1
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+      - image: cimg/base:2021.04
     steps:
       - run: echo "Hello CircleCI"
 
