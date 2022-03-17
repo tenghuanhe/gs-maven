@@ -19,6 +19,6 @@ public class GreeterTest
   @Test
   public void testHelloWorld()
   {
-    HelloWorld.main(null);
+    new HelloWorld().main(null);
   }
 }
