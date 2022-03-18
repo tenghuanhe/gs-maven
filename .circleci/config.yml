@@ -7,6 +7,25 @@ jobs:
     steps:
       - run: echo "Hello CircleCI"
 
+  connect-mysql:
+    docker:
+      - image: cimg/openjdk:17.0.1
+        environment:
+          DB_ROOT_USER: root
+          DB_PASS: ""
+      - image: circleci/mysql:5.7
+          environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: yes
+            MYSQL_ROOT_PASSWORD: ''
+      - run:
+          name: Wait for Database connection
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run:
+          name: Install MySQL client
+          command: sudo apt-get install mysql-client
+      - run: mysql -h 127.0.0.1 -u root -e "create database test"
+      - run: mysql -h 127.0.0.1 -u root -e "create database cost_usage"
+
   test:
     docker:
       - image: cimg/openjdk:17.0.1
@@ -65,3 +84,4 @@ workflows:
   hello:
     jobs:
       - hello-circleci
+      - connect-mysql
