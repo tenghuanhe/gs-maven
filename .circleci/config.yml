@@ -14,9 +14,9 @@ jobs:
           DB_ROOT_USER: root
           DB_PASS: ""
       - image: circleci/mysql:5.7
-          environment:
-            MYSQL_ALLOW_EMPTY_PASSWORD: yes
-            MYSQL_ROOT_PASSWORD: ''
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: ''
       - run:
           name: Wait for Database connection
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
