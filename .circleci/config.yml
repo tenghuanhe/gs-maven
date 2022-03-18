@@ -9,7 +9,7 @@ jobs:
 
   connect-mysql:
     docker:
-      - image: cimg/openjdk:8-jdk
+      - image: circleci/openjdk:8-jdk
         environment:
           DB_ROOT_USER: root
           DB_PASS: ""
