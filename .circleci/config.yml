@@ -9,7 +9,7 @@ jobs:
 
   connect-mysql:
     docker:
-      - image: cimg/openjdk:17.0.1
+      - image: cimg/openjdk:8-jdk
         environment:
           DB_ROOT_USER: root
           DB_PASS: ""
@@ -26,6 +26,10 @@ jobs:
           command: sudo apt-get update && sudo apt-get install default-mysql-client
       - run: mysql -h 127.0.0.1 -u root -e "create database test"
       - run: mysql -h 127.0.0.1 -u root -e "create database cost_usage"
+      - run: mysql -h 127.0.0.1 -u root -D test -e "create table customers (name varchar(255), city varchar(255), country varchar(255) );"
+      - run: mysql -h 127.0.0.1 -u root -D test -e "insert into customers (name, city, country) values ('Cardinal', 'Stavanger', 'Norway');"
+      - run: mysql -h 127.0.0.1 -u root -D test -e "select * from customers;"
+      - run: mysql -h 127.0.0.1 -u root -e "select * from test.customers;"
 
   test:
     docker:
