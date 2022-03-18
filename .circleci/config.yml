@@ -13,7 +13,7 @@ jobs:
         environment:
           DB_ROOT_USER: root
           DB_PASS: ""
-      - image: circleci/mysql:5.7
+      - image: circleci/mysql:8.0
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_ROOT_PASSWORD: ''
