@@ -12,10 +12,10 @@ jobs:
             echo "Hello CircleCI"
             echo $JAVA_HOME
             echo $(java -version)
-            mkdir /opt/flink
+            sudo mkdir /opt/flink
             curl -LO https://downloads.apache.org/flink/flink-1.12.7/flink-1.12.7-bin-scala_2.12.tgz
-            tar xf flink-1.12.7-bin-scala_2.12.tgz -C /opt/flink
-            mv /opt/flink/flink-1.12.7-bin-scala_2.12 /opt/flink/1.12
+            sudo tar xf flink-1.12.7-bin-scala_2.12.tgz -C /opt/flink
+            sudo mv /opt/flink/flink-1.12.7-bin-scala_2.12 /opt/flink/1.12
 
   connect-mysql:
     docker:
