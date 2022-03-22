@@ -7,11 +7,11 @@ jobs:
     steps:
       - run:
           command: |
-            apt-get update && apt-get install -y openjdk-8-jdk
+            sudo apt-get update && sudo apt-get install -y openjdk-8-jdk
             export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
-      - run: echo "Hello CircleCI"
-      - run: echo $JAVA_HOME
-      - run: echo $(java -version)
+            echo "Hello CircleCI"
+            echo $JAVA_HOME
+            echo $(java -version)
 
   connect-mysql:
     docker:
