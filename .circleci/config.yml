@@ -12,20 +12,18 @@ jobs:
             echo "Hello CircleCI"
             echo $JAVA_HOME
             echo $(java -version)
-            echo $USER
-            sudo chown -R $USER:$USER /opt
             echo "Installing flink-1.12"
-            mkdir /opt/flink
+            sudo mkdir /opt/flink
             curl -LO https://downloads.apache.org/flink/flink-1.12.7/flink-1.12.7-bin-scala_2.12.tgz
-            tar xf flink-1.12.7-bin-scala_2.12.tgz -C /opt/flink
-            mv /opt/flink/flink-1.12.7 /opt/flink/1.12
+            sudo tar xf flink-1.12.7-bin-scala_2.12.tgz -C /opt/flink
+            sudo mv /opt/flink/flink-1.12.7 /opt/flink/1.12
             echo "Installing spark-3.1"
-            mkdir /opt/spark
+            sudo mkdir /opt/spark
             curl -LO https://downloads.apache.org/spark/spark-3.1.3/spark-3.1.3-bin-hadoop3.2.tgz
-            tar xf spark-3.1.3-bin-hadoop3.2.tgz -C /opt/spark
-            mv /opt/spark/spark-3.1.3-bin-hadoop3.2 /opt/spark/3.1
-            /opt/flink/1.12/bin/start-cluster.sh
-            /opt/flink/1.12/bin/stop-cluster.sh
+            sudo tar xf spark-3.1.3-bin-hadoop3.2.tgz -C /opt/spark
+            sudo mv /opt/spark/spark-3.1.3-bin-hadoop3.2 /opt/spark/3.1
+            sudo sh /opt/flink/1.12/bin/start-cluster.sh
+            sudo sh /opt/flink/1.12/bin/stop-cluster.sh
 
   connect-mysql:
     docker:
