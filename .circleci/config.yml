@@ -5,7 +5,13 @@ jobs:
     docker:
       - image: cimg/base:2021.04
     steps:
+      - run:
+          command: |
+            apt-get update && apt-get install -y openjdk-8-jdk
+            export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
       - run: echo "Hello CircleCI"
+      - run: echo $JAVA_HOME
+      - run: echo $(java -version)
 
   connect-mysql:
     docker:
