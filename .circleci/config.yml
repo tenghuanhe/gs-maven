@@ -13,7 +13,7 @@ jobs:
             echo $JAVA_HOME
             echo $(java -version)
             echo "Installing flink-1.12"
-            chown -R $USER:$USER /opt
+            sudo chown -R $USER:$USER /opt
             mkdir /opt/flink
             curl -LO https://downloads.apache.org/flink/flink-1.12.7/flink-1.12.7-bin-scala_2.12.tgz
             tar xf flink-1.12.7-bin-scala_2.12.tgz -C /opt/flink
